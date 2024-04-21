@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS articles;
 CREATE DATABASE articles;
 USE articles;
-
+-- create tables 
 CREATE TABLE users(
 id INT AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(100) NOT NULL UNIQUE,
