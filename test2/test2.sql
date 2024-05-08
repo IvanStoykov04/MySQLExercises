@@ -134,3 +134,54 @@ END IF;
 END;
 | DELIMITER ;
 
+
+
+
+
+-- ZADACHI OT UPR
+-- ZAD 1
+
+
+DELIMITER |
+CREATE PROCEDURE publisherBooks(IN countBook INT)
+BEGIN
+SELECT publishers.name, publishers.id, COUNT(books.id) FROM publishers
+JOIN books
+ON publishers.ibooks.publisher_id
+GROUP BY book.id
+HAVING countBook=books.count AND publisher.id=books.publisher_id;
+END;
+| 
+DELIMITER ;
+
+DELIMITER |
+CREATE PROCEDURE dve (IN readerId INT)
+BEGIN
+DECLARE count Int;
+SELECT publisher.name,COUNT(BOOKS.ID) AS countBook FROM publisher
+JOIN books
+ON publisher.id=books.pubishers_id;
+end;
+|
+delimiter ;
+
+
+
+DELIMITER |
+CREATE TRIGGER edno BEFORE INSERT ON tasks
+for each row
+BEGIN
+DECLARE HOURS INT;
+SELECT SUM(hours) AS h INTO HOURS FROM tasks
+WHERE employee.id=NEW.employee_ID;
+IF(h>176)
+THEN CALL SendEmailToDepartment;
+END IF;
+END;
+| DELIMITER ;
+
+
+
+
+
+
